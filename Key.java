@@ -1,25 +1,37 @@
+/**
+ * Represents the Key class
+ */
 public class Key extends Item{
     
     // Attributes
+    private KeyType type;
 
-    // Basic constructor
-    public Key() {
-        super("key");
-    }
-
-    // Full constructor
-    public Key(String name) {
-        super(name);
+    // Constructor
+    public Key(String name, String description, KeyType type) {
+        super(name, description);
+        this.type = type;
     }
 
     // Methods
-    @Override
-    public void use() {
-        System.out.println("Sliding the " + getName() + " into the lock, you hear a small click.\nYou've unlocked the door.");
+
+    /**
+     * Returns a Key's type
+     * @return
+     */
+    public KeyType getType() {
+        return type;
     }
 
-    public static void main(String[] args) {
-        Key keycard = new Key("keycard");
-        keycard.use();
+    /**
+     * Allows a Key to be used
+     */
+    @Override
+    public void use() {
+        if (getType().equals(KeyType.KEYCARD)) {
+            System.out.println("You hold the keycard to the door, and it beeps satisfactorily. You've unlocked the door.");
+            return;
+        } else {
+            System.out.println("Sliding the " + getName() + " into the lock, you hear a small click.\nYou've unlocked the door.");
+        }
     }
 }
