@@ -263,10 +263,6 @@ public class Game {
         if (connectingDoor == null) {
             System.out.println("You can't go there from here.");
             return;
-        } else if (connectingDoor.getKey() instanceof Keypad) {
-            System.out.println("What's the code?");
-            String guess = getUserInput();
-            connectingDoor.unlockKeypadDoor(guess);
         } else {
             Item doorKey = connectingDoor.getKey();
             if (connectingDoor.isLocked()) {
